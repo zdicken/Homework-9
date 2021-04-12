@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - ap en</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="flashcards-app">
+  <div>
+    <input type="text" placeholder="Question" v-model = "cards.question" id="q"></input>
+    <input type="text" placeholder="Answer" v-model = "cards.answer" id="a"></input>
+    <input type="submit" v-on:click="newCard"></input>
+    <br>
+    <input type="radio" value="history" v-model="cards.category">History</input>
+    <input type="radio" value="science" v-model="cards.category">Science</input>
+    <input type="radio" value="math" v-model="cards.category">Math</input>
+  </div>
+  <div class="card" v-for="item in cards" v-on:click="item.flipped=!item.flipped">
+    <div class="top" v-bind:class="item.category" ></div>
+    <div class="side1" v-bind:class="{hide: item.flipped}">
+      <h1>{{item.question}}</h1>
+    </div>
+    <div class="side2" v-bind:class="{hide: !item.flipped}">
+      <h1>{{item.answer}}</h1>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
